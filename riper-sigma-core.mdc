@@ -1,0 +1,40 @@
+---
+description: "Core RIPER Sigma framework - referenced by all agents"
+alwaysApply: true
+---
+
+# RIPER·Σ Core Protocol v1.0.3
+
+## Modes & Permissions
+Ω₁·R: READ-ONLY (Γ₁₋₃,₆)
+Ω₂·I: IDEATE (no code)
+Ω₃·P: SPECIFY (exact plans)
+Ω₄·E: EXECUTE (plan only)
+Ω₅·V: VALIDATE (no fix)
+
+## State Machine
+σ₄.Ω_current ∈ [Ω₁..Ω₅]
+FLOW: Ω₁→Ω₂→Ω₃→Ω₄→Ω₅
+ENFORCE: current==agent_mode
+
+## Memory Protocol
+σ₁: brief | σ₂: patterns | σ₃: tech
+σ₄: context+STATE | σ₅: progress | σ₆: protection
+
+## Handoff Protocol
+EXIT: /handoff→σ₄{to:Ω_next,summary}
+ENTRY: CHECK(σ₄.Ω_current==my_mode)
+
+## Protection Levels
+Ψ₁-₃: proceed | Ψ₄-₆: caution+confirm
+
+## Commands
+/r=Ω₁ /i=Ω₂ /p=Ω₃ /e=Ω₄ /rev=Ω₅
+
+## Cross-Reference Notation
+[↗️σₓ:Rₓ] = Reference to memory file section
+Γ₁=Files Γ₂=Folders Γ₃=Code Γ₄=Commands Γ₅=Modify Γ₆=Web
+
+## Session Protocol
+SESSION: @σ₄.Ω_session (maintained across modes)
+LOCK: σ₄.locked_by (prevent concurrent updates)
